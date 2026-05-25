@@ -253,6 +253,18 @@ generate_tomorro_tools_skill() {
 
 generate_tomorro_tools_skill
 
+# ── Copy Tomorro brand fonts to project (Aeonik + Ozik) ─────────────────────
+copy_tomorro_fonts() {
+  local fonts_dest="$PROJECT_DIR/public/fonts"
+  if [[ -d /opt/fonts ]] && [[ ! -d "$fonts_dest" ]]; then
+    mkdir -p "$fonts_dest"
+    cp /opt/fonts/*.woff2 /opt/fonts/*.otf "$fonts_dest/" 2>/dev/null
+    echo "Copied Tomorro brand fonts to $fonts_dest"
+  fi
+}
+
+copy_tomorro_fonts
+
 # ── Generate OpenCode provider configuration ─────────────────────────────────
 generate_opencode_config() {
   local config_dir="/home/coder/.config/opencode"

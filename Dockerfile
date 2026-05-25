@@ -94,6 +94,9 @@ RUN code-server --user-data-dir /home/coder/.local/share/code-server \
 # Copied to /home/coder/project/ at startup by entrypoint.sh (only if not already present)
 COPY resources /opt/resources
 
+# Tomorro brand fonts (Aeonik + Ozik) — copied to project/public/fonts/ at startup
+COPY resources/fonts /opt/fonts
+
 # Builder Startup extension — auto-opens Claude sidebar + Simple Browser preview
 # Must use correct directory naming ({publisher}.{name}-{version}) and register in extensions.json
 COPY builder-startup-extension /tmp/builder-startup-extension

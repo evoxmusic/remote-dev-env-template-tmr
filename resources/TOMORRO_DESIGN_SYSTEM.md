@@ -80,12 +80,13 @@ Tomorro is an **AI-powered contract management platform** based in Paris. The vi
 
 ### Font Loading
 
-If font files are available in the project (check `/public/fonts/`), use `@font-face`:
+Font files are **pre-installed** in this workspace at `/public/fonts/`. Add these `@font-face` declarations to your project's global CSS (e.g., `src/index.css` or `src/App.css`):
 
 ```css
+/* Ozik — Display headings (h1, h2) */
 @font-face {
   font-family: 'Ozik';
-  src: url('/fonts/ozik-regular.woff2') format('woff2');
+  src: url('/fonts/OZIK-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -93,15 +94,40 @@ If font files are available in the project (check `/public/fonts/`), use `@font-
 
 @font-face {
   font-family: 'Ozik';
-  src: url('/fonts/ozik-bold.woff2') format('woff2');
+  src: url('/fonts/OZIK-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ozik';
+  src: url('/fonts/OZIK-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
+  font-family: 'Ozik';
+  src: url('/fonts/OZIK-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Aeonik — Body, UI, subheadings (h3–h6, paragraphs, buttons) */
+@font-face {
   font-family: 'Aeonik';
-  src: url('/fonts/aeonik-regular.woff2') format('woff2');
+  src: url('/fonts/Aeonik-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik';
+  src: url('/fonts/Aeonik-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -109,7 +135,7 @@ If font files are available in the project (check `/public/fonts/`), use `@font-
 
 @font-face {
   font-family: 'Aeonik';
-  src: url('/fonts/aeonik-medium.woff2') format('woff2');
+  src: url('/fonts/Aeonik-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -117,14 +143,14 @@ If font files are available in the project (check `/public/fonts/`), use `@font-
 
 @font-face {
   font-family: 'Aeonik';
-  src: url('/fonts/aeonik-bold.woff2') format('woff2');
+  src: url('/fonts/Aeonik-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 ```
 
-**If font files are NOT available**, use these Google Fonts as fallback:
+**If font files are NOT available** (e.g., outside this workspace), use these Google Fonts as fallback:
 - **Inter** (replaces Aeonik) — `https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap`
 - **Sora** (replaces Ozik) — `https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap`
 - **Instrument Serif** is available on Google Fonts — `https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap`
