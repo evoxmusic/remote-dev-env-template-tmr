@@ -1,5 +1,5 @@
 #!/bin/bash
-# entrypoint.sh — Builder Workspace startup script
+# entrypoint.sh — Tomorro Workspace startup script
 # Clones a git repo (if configured), installs dependencies, starts code-server.
 #
 # Environment variables (all optional — set per-builder in Qovery):
@@ -46,7 +46,7 @@ if [[ "$(id -u)" -eq 0 ]]; then
 
   # Regenerate code-server config if wiped by volume mount (no auth — Qovery handles access control)
   if [[ ! -f /home/coder/.config/code-server/config.yaml ]]; then
-    printf 'bind-addr: 0.0.0.0:8080\nauth: none\ncert: false\napp-name: Builder Workspace\n' \
+    printf 'bind-addr: 0.0.0.0:8080\nauth: none\ncert: false\napp-name: Tomorro Workspace\n' \
       > /home/coder/.config/code-server/config.yaml
   fi
 
@@ -164,7 +164,7 @@ generate_claude_md() {
 
 generate_claude_md
 
-# ── Generate OpenCode skill for builder workspace ────────────────────────────
+# ── Generate OpenCode skill for Tomorro workspace ────────────────────────────
 generate_opencode_skill() {
   local skill_dir="$PROJECT_DIR/.opencode/skills/builder-workspace"
   if [[ ! -f "$skill_dir/SKILL.md" ]]; then
@@ -177,6 +177,56 @@ generate_opencode_skill() {
 }
 
 generate_opencode_skill
+
+# ── Generate Tomorro design system skill (Claude Code + OpenCode) ────────────
+generate_tomorro_design_skill() {
+  # For Claude Code
+  local claude_skill_dir="$PROJECT_DIR/.claude/skills/tomorro-design-system"
+  if [[ ! -f "$claude_skill_dir/SKILL.md" ]]; then
+    if [[ -f /opt/resources/TOMORRO_DESIGN_SYSTEM.md ]]; then
+      mkdir -p "$claude_skill_dir"
+      cp /opt/resources/TOMORRO_DESIGN_SYSTEM.md "$claude_skill_dir/SKILL.md"
+      echo "Generated Tomorro design system skill (Claude Code)"
+    fi
+  fi
+
+  # For OpenCode
+  local opencode_skill_dir="$PROJECT_DIR/.opencode/skills/tomorro-design-system"
+  if [[ ! -f "$opencode_skill_dir/SKILL.md" ]]; then
+    if [[ -f /opt/resources/TOMORRO_DESIGN_SYSTEM.md ]]; then
+      mkdir -p "$opencode_skill_dir"
+      cp /opt/resources/TOMORRO_DESIGN_SYSTEM.md "$opencode_skill_dir/SKILL.md"
+      echo "Generated Tomorro design system skill (OpenCode)"
+    fi
+  fi
+}
+
+generate_tomorro_design_skill
+
+# ── Generate Tomorro company context skill (Claude Code + OpenCode) ──────────
+generate_tomorro_company_skill() {
+  # For Claude Code
+  local claude_skill_dir="$PROJECT_DIR/.claude/skills/tomorro-company-context"
+  if [[ ! -f "$claude_skill_dir/SKILL.md" ]]; then
+    if [[ -f /opt/resources/TOMORRO_COMPANY_CONTEXT.md ]]; then
+      mkdir -p "$claude_skill_dir"
+      cp /opt/resources/TOMORRO_COMPANY_CONTEXT.md "$claude_skill_dir/SKILL.md"
+      echo "Generated Tomorro company context skill (Claude Code)"
+    fi
+  fi
+
+  # For OpenCode
+  local opencode_skill_dir="$PROJECT_DIR/.opencode/skills/tomorro-company-context"
+  if [[ ! -f "$opencode_skill_dir/SKILL.md" ]]; then
+    if [[ -f /opt/resources/TOMORRO_COMPANY_CONTEXT.md ]]; then
+      mkdir -p "$opencode_skill_dir"
+      cp /opt/resources/TOMORRO_COMPANY_CONTEXT.md "$opencode_skill_dir/SKILL.md"
+      echo "Generated Tomorro company context skill (OpenCode)"
+    fi
+  fi
+}
+
+generate_tomorro_company_skill
 
 # ── Generate OpenCode provider configuration ─────────────────────────────────
 generate_opencode_config() {
@@ -457,9 +507,10 @@ ensure_gitignore() {
   fi
 
   local gitignore="$PROJECT_DIR/.gitignore"
-  local header="# Builder Workspace — auto-generated files"
+  local header="# Tomorro Workspace — auto-generated files"
   local entries=(
     "CLAUDE.md"
+    ".claude/"
     ".opencode/"
     ".vscode/tasks.json"
   )
@@ -540,6 +591,6 @@ else
   echo "Starting OpenCode web UI on port ${OPENCODE_PORT}..."
   (cd "$PROJECT_DIR" && opencode web --port "${OPENCODE_PORT}" >> /tmp/opencode-web.log 2>&1) &
 
-  echo "Starting Builder Workspace..."
+  echo "Starting Tomorro Workspace..."
   exec code-server --host 0.0.0.0 --port 8080 "$PROJECT_DIR"
 fi

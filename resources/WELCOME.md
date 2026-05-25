@@ -1,13 +1,13 @@
-# Welcome to Your Builder Workspace
+# Welcome to Your Tomorro Workspace
 
 This is your personal space to build apps, websites, and tools. You don't need
 any technical skills — an AI assistant called **Claude** will do the building for
 you. You just describe what you want in plain English.
 
-Your Platform Engineering team set this workspace up for you. Everything here is
+Your Tomorro team set this workspace up for you. Everything here is
 safe: you can experiment, try things out, and even break stuff. Nothing bad will
-happen. If anything goes wrong, you can always start over or ask your Platform
-Engineering team for help. That's what this environment is designed for.
+happen. If anything goes wrong, you can always start over or ask your Tomorro
+team for help. That's what this environment is designed for.
 
 
 ---
@@ -154,7 +154,7 @@ workspace is your personal sandbox.
 - If you're stuck — tell Claude "I'm stuck, can you help?"
 - If nothing works — close the browser tab and reopen the workspace. Everything
   will reset to a working state.
-- If all else fails — ask your Platform Engineering team. They can reset your
+- If all else fails — ask your Tomorro team. They can reset your
   workspace in seconds.
 
 The whole point of this workspace is for you to experiment and try things. There

@@ -3,7 +3,7 @@
   "displayName": "Builder Startup",
   "description": "Auto-opens Claude Code sidebar and Simple Browser preview for non-tech builders",
   "version": "0.0.1",
-  "publisher": "qovery",
+  "publisher": "tomorro",
   "engines": {
     "vscode": "^1.74.0"
   },

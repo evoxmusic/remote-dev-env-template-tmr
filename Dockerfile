@@ -1,4 +1,4 @@
-# Builder Workspace — All-in-One
+# Tomorro Workspace — All-in-One
 # VS Code (code-server) + Claude Code + OpenCode + Codex + RTK
 # + GitHub CLI + Qovery CLI + Node.js + Python + Git + Live Preview
 #
@@ -97,12 +97,12 @@ COPY resources /opt/resources
 # Builder Startup extension — auto-opens Claude sidebar + Simple Browser preview
 # Must use correct directory naming ({publisher}.{name}-{version}) and register in extensions.json
 COPY builder-startup-extension /tmp/builder-startup-extension
-RUN mkdir -p /home/coder/.local/share/code-server/extensions/qovery.builder-startup-0.0.1 \
+RUN mkdir -p /home/coder/.local/share/code-server/extensions/tomorro.builder-startup-0.0.1 \
     && cp /tmp/builder-startup-extension/package.json \
           /tmp/builder-startup-extension/extension.js \
-          /home/coder/.local/share/code-server/extensions/qovery.builder-startup-0.0.1/ \
+          /home/coder/.local/share/code-server/extensions/tomorro.builder-startup-0.0.1/ \
     && rm -rf /tmp/builder-startup-extension \
-    && jq '. += [{"identifier":{"id":"qovery.builder-startup"},"version":"0.0.1","location":{"$mid":1,"path":"/home/coder/.local/share/code-server/extensions/qovery.builder-startup-0.0.1","scheme":"file"},"relativeLocation":"qovery.builder-startup-0.0.1"}]' \
+    && jq '. += [{"identifier":{"id":"tomorro.builder-startup"},"version":"0.0.1","location":{"$mid":1,"path":"/home/coder/.local/share/code-server/extensions/tomorro.builder-startup-0.0.1","scheme":"file"},"relativeLocation":"tomorro.builder-startup-0.0.1"}]' \
        /home/coder/.local/share/code-server/extensions/extensions.json > /tmp/ext.json \
     && mv /tmp/ext.json /home/coder/.local/share/code-server/extensions/extensions.json
 
@@ -111,7 +111,7 @@ ENV CS_DISABLE_GETTING_STARTED_OVERRIDE=1
 
 # Configure code-server (no auth — Qovery handles access control)
 RUN mkdir -p /home/coder/.config/code-server \
-    && printf 'bind-addr: 0.0.0.0:8080\nauth: none\ncert: false\napp-name: Builder Workspace\n' \
+    && printf 'bind-addr: 0.0.0.0:8080\nauth: none\ncert: false\napp-name: Tomorro Workspace\n' \
        > /home/coder/.config/code-server/config.yaml
 
 # Pre-configure VS Code settings for a clean, dark, non-tech-friendly experience
