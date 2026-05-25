@@ -228,6 +228,31 @@ generate_tomorro_company_skill() {
 
 generate_tomorro_company_skill
 
+# ── Generate Tomorro internal tools skill (Claude Code + OpenCode) ───────────
+generate_tomorro_tools_skill() {
+  # For Claude Code
+  local claude_skill_dir="$PROJECT_DIR/.claude/skills/tomorro-internal-tools"
+  if [[ ! -f "$claude_skill_dir/SKILL.md" ]]; then
+    if [[ -f /opt/resources/TOMORRO_INTERNAL_TOOLS.md ]]; then
+      mkdir -p "$claude_skill_dir"
+      cp /opt/resources/TOMORRO_INTERNAL_TOOLS.md "$claude_skill_dir/SKILL.md"
+      echo "Generated Tomorro internal tools skill (Claude Code)"
+    fi
+  fi
+
+  # For OpenCode
+  local opencode_skill_dir="$PROJECT_DIR/.opencode/skills/tomorro-internal-tools"
+  if [[ ! -f "$opencode_skill_dir/SKILL.md" ]]; then
+    if [[ -f /opt/resources/TOMORRO_INTERNAL_TOOLS.md ]]; then
+      mkdir -p "$opencode_skill_dir"
+      cp /opt/resources/TOMORRO_INTERNAL_TOOLS.md "$opencode_skill_dir/SKILL.md"
+      echo "Generated Tomorro internal tools skill (OpenCode)"
+    fi
+  fi
+}
+
+generate_tomorro_tools_skill
+
 # ── Generate OpenCode provider configuration ─────────────────────────────────
 generate_opencode_config() {
   local config_dir="/home/coder/.config/opencode"
